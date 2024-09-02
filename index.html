@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Wallpaper Generator</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+     body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#wallpaper {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease;
+}
+
+
+
+     </style>
+</head>
+<body>
+    <div id="wallpaper"></div>
+    <script>
+const wallpaperElement = document.getElementById("wallpaper");
+
+function getRandomImageUrl() {
+    // Fetches a random image from the Picsum API with the specified size
+    return `https://picsum.photos/1920/1080?random&t=${new Date().getTime()}`;
+}
+
+function changeWallpaper() {
+    const imageUrl = getRandomImageUrl();
+    wallpaperElement.style.backgroundImage = `url(${imageUrl})`;
+}
+
+// Change wallpaper every 10 seconds
+setInterval(changeWallpaper, 10000);
+
+// Initialize with a random wallpaper on load
+changeWallpaper();
+
+
+    </script>
+</body>
+</html>
